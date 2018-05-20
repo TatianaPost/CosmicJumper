@@ -1,42 +1,109 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Cosmic jumper</title>
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="https://image.ibb.co/cwOk6J/char_boy.png" type="image/png" sizes="20x20">
+  <meta charset="UTF-8">
+  <title>Cosmic jumper</title>
+  <!-- Emodji font -->
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <!-- Google fints -->
+  <link href="https://fonts.googleapis.com/css?family=Cute+Font|Monoton" rel="stylesheet">
+  <!-- Small icon dispalyed in the new tab -->
+  <link rel="icon" href="https://image.ibb.co/cwOk6J/char_boy.png" type="image/png" sizes="20x20">
+  <!-- CSS styles -->
+  <style>
+    body {
+        text-align: center;
+        background-color: #1a1d53;
+    }
+
+    h1 {
+      width: 110%;
+      height: 25px;
+      margin: 10px 0 0 0;
+      font-family: 'Monoton', cursive;
+      font-weight: normal;
+      color: white;
+      position: absolute;
+      text-align: center;
+    }
+
+    canvas {
+      position: absolute;
+      top: 55px;
+      left: 40%;
+      width: 505px;
+      height: 808px;
+      margin: 10px;
+    }
+
+    .rules {
+      position: absolute;
+      color: white;
+      font-size: 24px;
+      font-family: 'Cute Font', cursive;
+      left: 10%;
+      width: 300px;
+      height: 808px;
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .rules p {
+        font-weight: normal;
+    }
+
+    #logo {
+      position: absolute;
+      bottom: 5px;
+      left: 100px;
+    }
+
+    .footer p,
+    .footer a {
+      left: 50%;
+      text-align: center;
+      color: white;
+      font-size: 13px;
+      font-family: 'Cute Font', cursive;
+      text-decoration: none;
+      position: absolute;
+      bottom: 5px;
+    }
+  </style>
 </head>
 <body>
-    <h1>COSMIC jumper</h1>
-    <div class="rules">
-      <p>Help the cosmonaut reach the space station!</p>
-      <p>In order to navigate use your keyboard:
-        <i class="em em-arrow_left"></i>
-        <i class="em em-arrow_right"></i>
-        <i class="em em-arrow_up"></i>
-        <i class="em em-arrow_down"></i>
-      </p>
-      <p>Be aware of asteroids
-        <i class="em em-comet"></i>
-        and dangerous green toxic area
-        <i class="em em-cloud"></i>.
-        In order to pass green toxic area catch up a spaceship <i class="em em-rocket"></i>.
-        Once you have reached the space station, the game will restart.
-      </p>
-      <p>Good luck!</p>
-    </div>
-    <div class="footer">
-      <p>&copy; 2018, designed by</p>
-        <a href="http://julia-juls.com/" target="_blank">
-          <img src="images/logo.svg" alt="logo" style="width: 80px" id="logo">
-        </a>
-        <a href="http://www.freepik.com" target="_blank">
-          & visuals designed by Freepik
-        </a>
-    </div>
-    <script src="js/resources.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
+  <h1>COSMIC jumper</h1>
+  <div class="rules">
+    <p>Help the cosmonaut reach the space station!</p>
+    <p>In order to navigate use your keyboard:
+      <i class="em em-arrow_left"></i>
+      <i class="em em-arrow_right"></i>
+      <i class="em em-arrow_up"></i>
+      <i class="em em-arrow_down"></i>
+    </p>
+    <p>Be aware of asteroids
+      <i class="em em-comet"></i>
+      and dangerous green toxic area
+      <i class="em em-cloud"></i>.
+      In order to pass green toxic area catch up a spaceship <i class="em em-rocket"></i>.
+      Once you have reached the space station, the game will restart.
+    </p>
+    <p>Good luck!</p>
+  </div>
+  <div class="footer">
+    <p>&copy; 2018, designed by</p>
+      <a href="http://julia-juls.com/" target="_blank">
+        <img src="images/logo.svg" alt="logo" style="width: 80px" id="logo">
+      </a>
+      <a href="http://www.freepik.com" target="_blank">
+        & visuals designed by Freepik
+      </a>
+  </div>
+  <script src="js/resources.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/engine.js"></script>
 </body>
 </html>

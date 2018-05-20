@@ -3,6 +3,29 @@ var bottomCanvasEnd = 808;
 var stepX = 101;
 var stepY = 83;
 
+//PARENT CLASS FOR FRIENDS AND ENEMIES CHARACTERS
+var GameCharacter = function() {
+};
+
+//movement function
+GameCharacter.prototype.update = function(dt) {
+  if (this.x < rightCanvasEnd) {
+    this.x += dt * this.speed;
+  } else {
+    this.x = -200;
+  }
+};
+
+// Draw the enemy on the screen, required method for game
+GameCharacter.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+//inheritance
+var inheritsFrom = function (child, parent) {
+  child.prototype = Object.create(parent.prototype);
+};
+
 //ENEMIES
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
@@ -14,19 +37,7 @@ var Enemy = function(x, y, speed) {
   this.sprite = "images/enemy-bug.png";
 };
 
-//movement function
-Enemy.prototype.update = function(dt) {
-  if (this.x < rightCanvasEnd) {
-    this.x += dt * this.speed;
-  } else {
-    this.x = -100;
-  }
-};
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+inheritsFrom(Enemy, GameCharacter);
 
 //BIG ENEMIES
 var BigEnemy = function(x, y, speed) {
@@ -38,39 +49,19 @@ var BigEnemy = function(x, y, speed) {
   this.sprite = "images/enemy-bug-big.png";
 };
 
-BigEnemy.prototype.update = function(dt) {
-  if (this.x < rightCanvasEnd) {
-    this.x += dt * this.speed;
-  } else {
-    this.x = -200;
-  }
-};
-
-BigEnemy.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+inheritsFrom(BigEnemy, GameCharacter);
 
 //FRIENDS
-var Friend = function(x, y, speed) {
-  this.x = x;
+var Friend = function(y, speed) {
+  this.x = -300;
   this.y = y;
   this.speed = speed;
   this.width = 80;
   this.height = 50;
-  this.sprite = "images/friend-ship.png"; //to change
+  this.sprite = "images/friend-ship.png";
 };
 
-Friend.prototype.update = function(dt) {
-  if (this.x < rightCanvasEnd) {
-    this.x += dt * this.speed;
-  } else {
-    this.x = -200;
-  }
-};
-
-Friend.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+inheritsFrom(Friend, GameCharacter);
 
 //BIG
 var BigFriend = function(x, y, speed) {
@@ -79,22 +70,12 @@ var BigFriend = function(x, y, speed) {
   this.speed = speed;
   this.width = 160;
   this.height = 50;
-  this.sprite = "images/friend-ship-big.png"; //to change
+  this.sprite = "images/friend-ship-big.png";
 };
 
-BigFriend.prototype.update = function(dt) {
-  if (this.x < rightCanvasEnd) {
-    this.x += dt * this.speed;
-  } else {
-    this.x = -200;
-  }
-};
+inheritsFrom(BigFriend, GameCharacter);
 
-BigFriend.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-// Now write your own player class
+// PLAYER
 var Player = function() {
   this.x = 213;
   this.y = 610;
@@ -112,7 +93,7 @@ var resetPlayer = function() {
   player.y = 610;
 };
 
-// This class requires an update(), render() and
+// Checks collisions with enemies and firends, restarts the game once won
 Player.prototype.update = function(dt) {
   //if player meets the bug (comet) - restart
   var bug = checkCollisions(allEnemies);
@@ -181,14 +162,17 @@ allEnemies.push(bigEnemy1);
 allEnemies.push(bigEnemy2);
 
 //instaniates friends
-var allFriends = [new BigFriend(-580, 220, 70), new BigFriend(-500, 140, 70)];
+var allFriends = [
+  new BigFriend(-580, 220, 70),
+  new BigFriend(-500, 140, 70)
+];
 
-var friend = new Friend(-150, 220, 70);
-var friend2 = new Friend(-850, 140, 70);
+var friend = new Friend(220, 70);
+var friend2 = new Friend(140, 70);
 allFriends.push(friend);
 allFriends.push(friend2);
 
-//function checking collisions -
+//function checking collisions
 var checkCollisions = function(array) {
   for (var i = 0; i < array.length; i++) {
     if (
@@ -214,3 +198,12 @@ document.addEventListener("keyup", function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
+
+//Function, preventig default page scrolling when arrow keys are pressed
+//Function provided by Zeta at https://stackoverflow.com/questions/8916620/disable-arrow-key-scrolling-in-users-browser
+window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
