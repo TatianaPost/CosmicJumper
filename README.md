@@ -13,13 +13,14 @@ A player should cross the space avoiding asteroids and green-toxic area in order
 In order to navigate the game use your keyboard: press on arrow keys to move the player up and down, left and right.
 
 ## How to load the game
-You may download the project and open index.html file with Chrome, or play online: at https://usjulija.github.io/CosmicJumper/
+You may download the project and open index.html file with Chrome, or play online at: https://usjulija.github.io/CosmicJumper/
 
 ## Game preview
 ![Game preview](https://image.ibb.co/cvEp0d/Untitled.jpg)
 
 ## Acknowledgments
 The visuals were designed by [freepic](https://www.freepik.com/)
+
 The following lessons were used in order to create the game:
 * [FROGGER TUTORIAL](https://sites.santarosa.k12.fl.us/nhs/teacher_pages/arringtonpages/docs/FroggerTutorial.pdf)
 * [Udacity HTML2 Canvas](https://eu.udacity.com/course/html5-canvas--ud292)
