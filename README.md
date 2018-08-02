@@ -6,7 +6,7 @@ The game was created using Object Oriented JavaScript and HTML canvas
 
 * engine.js and resources.js were fully provided by Udacity
 * Visuals were added in png format
-* Game is static and can by played only from a computer, as the keyboard is needed to navigate
+* Game is static and can be played only from a computer, as the keyboard is needed to navigate
 
 ## How to play
 A player should cross the space avoiding asteroids and green-toxic area in order to reach the space station on the other edge of the canvas. Once the station is reached, the game restarts.
